@@ -1,0 +1,12 @@
+spring:
+  datasource:
+    #url: jdbc:postgresql://localhost:5432/gamersroom
+    #username: postgres
+    #password: 10junio
+    url: jdbc:postgresql://ec2-54-247-158-179.eu-west-1.compute.amazonaws.com:5432/d9c3gmnalgtn09
+    username: erqxurtdkleitv
+    password: 4d096b7e2a9231f7d0bed18c958b97c81d1adb726aedfe885bf04925fd7f8fcd
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
