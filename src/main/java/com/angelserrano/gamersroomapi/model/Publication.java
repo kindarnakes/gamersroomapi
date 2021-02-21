@@ -8,7 +8,7 @@ import java.util.*;
 
 @Entity
 @Table(name = "Publication", schema = "public")
-@JsonIgnoreProperties(value = { "comments", "userlikes", }, allowSetters = false, allowGetters = true)
+@JsonIgnoreProperties(value = {"userlikes" }, allowSetters = false, allowGetters = true)
 public class Publication {
 
     @Id
@@ -39,7 +39,7 @@ public class Publication {
     @JsonIgnoreProperties("publication")
     private Coordinates coordinates;
 
-    @OneToMany(cascade = {CascadeType.PERSIST, CascadeType.REMOVE}, mappedBy = "publication")
+    @OneToMany(cascade = {CascadeType.PERSIST, CascadeType.REMOVE, CascadeType.MERGE}, mappedBy = "publication")
     private List<Comment> comments;
 
 

@@ -1,5 +1,7 @@
 package com.angelserrano.gamersroomapi.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.Objects;
@@ -16,11 +18,13 @@ public class Comment {
 
     @Column(name = "text")
     private String text;
-    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE}, fetch = FetchType.EAGER)
-    @JoinColumn(name = "id_publication", referencedColumnName = "id", insertable = false, updatable = false)
+    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE}, fetch = FetchType.LAZY)
+    @JoinColumn(name = "id_publication")
+    @JsonIgnoreProperties({"comments", "user", "text", "images", "time", "videos", "audios", "coordinates", "userlikes"})
     private Publication publication;
-    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE}, fetch = FetchType.EAGER)
-    @JoinColumn(name = "email")
+    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE}, fetch = FetchType.LAZY)
+    @JoinColumn(name = "id_user")
+    @JsonIgnoreProperties({"friends", "comments", "publications", "description", "pass", "email", "portrait", "privacy", "likes"})
     private User user;
 
     public Comment() {
@@ -61,6 +65,9 @@ public class Comment {
 
     public void setPublication(Publication publication) {
         this.publication = publication;
+        if(!publication.getComments().contains(this)){
+            publication.getComments().add(this);
+        }
     }
 
     public User getUser() {
@@ -90,5 +97,16 @@ public class Comment {
     @Override
     public int hashCode() {
         return Objects.hash(id);
+    }
+
+    @Override
+    public String toString() {
+        return "Comment{" +
+                "id=" + id +
+                ", date=" + date +
+                ", text='" + text + '\'' +
+                ", publication=" + publication +
+                ", user=" + user +
+                '}';
     }
 }

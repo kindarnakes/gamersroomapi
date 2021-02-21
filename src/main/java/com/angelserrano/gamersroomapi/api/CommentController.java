@@ -1,7 +1,12 @@
 package com.angelserrano.gamersroomapi.api;
 
 import com.angelserrano.gamersroomapi.model.Comment;
+import com.angelserrano.gamersroomapi.model.Publication;
+import com.angelserrano.gamersroomapi.model.User;
 import com.angelserrano.gamersroomapi.service.CommentService;
+import com.angelserrano.gamersroomapi.service.PublicationService;
+import com.angelserrano.gamersroomapi.service.UserService;
+import jdk.swing.interop.SwingInterOpUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -19,6 +24,10 @@ public class CommentController {
 
     @Autowired
     CommentService service;
+    @Autowired
+    PublicationService publicationService;
+    @Autowired
+    UserService userService;
 
 
     @GetMapping
@@ -37,7 +46,10 @@ public class CommentController {
 
     @PostMapping
     public ResponseEntity<Object> createComment(@Valid @RequestBody Comment myItem) {
-
+        Publication p = publicationService.getPublicationById(myItem.getPublication().getId());
+        User u = userService.getUserById(myItem.getUser().getId());
+        myItem.setUser(u);
+        myItem.setPublication(p);
         try {
             Comment created = service.createComment(myItem);
             return new ResponseEntity<Object>(created, new HttpHeaders(), HttpStatus.OK);

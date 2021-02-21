@@ -18,6 +18,8 @@ public class User {
     private String pass;
     @Column(name = "portrait")
     private String portrait;
+    @Column(name = "token")
+    private String token;
 
     @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
     @JoinTable(
@@ -64,6 +66,14 @@ public class User {
         this.publications = new ArrayList<>();
         this.friends = new HashSet<>();
         this.likes = new HashSet<>();
+    }
+
+    public String getToken() {
+        return token;
+    }
+
+    public void setToken(String token) {
+        this.token = token;
     }
 
     public String getEmail() {

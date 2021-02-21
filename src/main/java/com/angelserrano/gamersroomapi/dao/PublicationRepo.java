@@ -71,7 +71,7 @@ public interface PublicationRepo extends JpaRepository<Publication, Integer> {
                     "                       (SELECT id2 FROM friends WHERE id1 = ?1 )" +
                     "                       )" +
                     "                    )))" +
-                    "GROUP BY p.id LIMIT ?3 OFFSET ?2",
+                    "GROUP BY p.id ORDER BY p.post_date DESC LIMIT ?3 OFFSET ?2",
             nativeQuery = true
     )
     List<Publication> getPublicationsAllowAccessByIdUser(Integer iduser, int init, int nperpage);
@@ -85,7 +85,7 @@ public interface PublicationRepo extends JpaRepository<Publication, Integer> {
                     "                       (SELECT id2 FROM friends WHERE id1 = ?1 )" +
                     "                       )" +
                     "                    ))" +
-                    "GROUP BY p.id LIMIT ?4 OFFSET ?3",
+                    "GROUP BY p.id ORDER BY p.post_date DESC LIMIT ?4 OFFSET ?3",
             nativeQuery = true
     )
     List<Publication> getPublicationsByIdUserAllowAccessByIdUser(Integer iduser, Integer idsearch, int init, int nperpage);

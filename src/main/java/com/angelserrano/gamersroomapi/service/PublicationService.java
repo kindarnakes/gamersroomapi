@@ -55,13 +55,23 @@ public class PublicationService {
 
         if(item.isPresent()){
             Publication p = item.get();
+
+            if( publication.getUser() != null)
             p.setUser(publication.getUser());
+
+            if( publication.getCoordinates() != null)
             p.setCoordinates(p.getCoordinates());
+
+            if( publication.getImages() != null)
             p.setAudios(publication.getAudios());
+
+            if( publication.getVideos() != null)
             p.setVideos(publication.getVideos());
+
+            if( publication.getImages() != null)
             p.setImages(publication.getImages());
-            p.setUserlikes(publication.getUserlikes());
-            p.setComments(publication.getComments());
+
+            if( publication.getText() != null)
             p.setText(publication.getText());
 
             p = repository.save(p);
