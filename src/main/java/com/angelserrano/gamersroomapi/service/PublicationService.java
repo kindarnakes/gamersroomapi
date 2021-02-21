@@ -1,6 +1,8 @@
 package com.angelserrano.gamersroomapi.service;
 
+import com.angelserrano.gamersroomapi.dao.CoordinatesRepo;
 import com.angelserrano.gamersroomapi.dao.PublicationRepo;
+import com.angelserrano.gamersroomapi.model.Coordinates;
 import com.angelserrano.gamersroomapi.model.Publication;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,6 +16,8 @@ public class PublicationService {
 
     @Autowired
     PublicationRepo repository;
+    @Autowired
+    CoordinatesRepo coordinatesRepo;
 
     public List<Publication> getAllItems() {
         List<Publication> itemList = repository.findAll();
@@ -56,22 +60,26 @@ public class PublicationService {
         if(item.isPresent()){
             Publication p = item.get();
 
-            if( publication.getUser() != null)
             p.setUser(publication.getUser());
+            if(publication.getCoordinates() == null && p.getCoordinates() != null){
+                Coordinates coord = coordinatesRepo.findById(p.getCoordinates().getId()).get();
+                p.setCoordinates(null);
+                coordinatesRepo.delete(coord);
+            }else if(publication.getCoordinates() != null && p.getCoordinates() != null){
+                Coordinates coord = coordinatesRepo.findById(p.getCoordinates().getId()).get();
+                p.setCoordinates(publication.getCoordinates());
+                coordinatesRepo.delete(coord);
+            }else{
+                p.setCoordinates(publication.getCoordinates());
+            }
 
-            if( publication.getCoordinates() != null)
-            p.setCoordinates(p.getCoordinates());
 
-            if( publication.getImages() != null)
             p.setAudios(publication.getAudios());
 
-            if( publication.getVideos() != null)
             p.setVideos(publication.getVideos());
 
-            if( publication.getImages() != null)
             p.setImages(publication.getImages());
 
-            if( publication.getText() != null)
             p.setText(publication.getText());
 
             p = repository.save(p);

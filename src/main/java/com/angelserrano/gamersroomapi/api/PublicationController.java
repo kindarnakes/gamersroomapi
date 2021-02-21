@@ -84,26 +84,26 @@ public class PublicationController {
     @PutMapping("/{id}")
     public ResponseEntity<Publication> UpdatePublication(@Valid @RequestBody Publication myItem, @PathVariable("id") int id) {
         myItem.setId(id);
-        Pattern pattern = Pattern.compile("^https://res.cloudinary.com*");
+        Pattern pattern = Pattern.compile("^http://res.cloudinary.com*");
         Cloud cloud = Cloud.getINSTANCE();
 
         User u = userService.getUserById(myItem.getUser().getId());
         myItem.setUser(u);
         myItem.getImages().forEach(image -> {
-            image.setPublication(myItem);
             if (!pattern.matcher(image.getUrl()).find()) {
+                image.setPublication(myItem);
                 image.setUrl(cloud.uploadImg(image.getUrl()));
             }
         });
         myItem.getVideos().forEach(video -> {
-            video.setPublication(myItem);
             if (!pattern.matcher(video.getUrl()).find()) {
+                video.setPublication(myItem);
                 video.setUrl(cloud.uploadVideo(video.getUrl()));
             }
         });
         myItem.getAudios().forEach(audio -> {
-            audio.setPublication(myItem);
             if (!pattern.matcher(audio.getUrl()).find()) {
+                audio.setPublication(myItem);
                 audio.setUrl(cloud.uploadVideo(audio.getUrl()));
             }
         });

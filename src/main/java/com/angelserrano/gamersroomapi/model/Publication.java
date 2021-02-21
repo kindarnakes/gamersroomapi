@@ -137,6 +137,12 @@ public class Publication {
     }
 
     public void setImages(List<Image> images) {
+            this.images.forEach(image -> {
+                image.setPublication(null);
+            });
+        images.forEach(image -> {
+            image.setPublication(this);
+        });
         this.images = images;
     }
 
@@ -162,7 +168,7 @@ public class Publication {
 
     public void setCoordinates(Coordinates coordinates) {
         this.coordinates = coordinates;
-        if(this.coordinates.getPublication() == null || (this.coordinates.getPublication() != null && this.coordinates.getPublication() != this)){
+        if(this.coordinates != null && (this.coordinates.getPublication() == null || (this.coordinates.getPublication() != null && this.coordinates.getPublication() != this))){
             this.coordinates.setPublication(this);
         }
     }

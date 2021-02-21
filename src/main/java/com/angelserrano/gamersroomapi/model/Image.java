@@ -42,8 +42,10 @@ public class Image {
 
     public void setPublication(Publication publication) {
         this.publication = publication;
-        if(!publication.getImages().contains(this)){
-            publication.addImage(this);
+        if(publication != null) {
+            if (!publication.getImages().contains(this)) {
+                publication.addImage(this);
+            }
         }
     }
 }
