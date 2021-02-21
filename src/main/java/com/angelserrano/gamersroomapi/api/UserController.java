@@ -15,6 +15,7 @@ import java.util.regex.Pattern;
 
 @RestController
 @RequestMapping("/user")
+@CrossOrigin(origins = "*", maxAge = 3600)
 public class UserController {
     @Autowired
     UserService service;
@@ -78,6 +79,13 @@ public class UserController {
     @GetMapping("/name/{name}")
     public ResponseEntity<List<User>> getAllByName(@PathVariable("name") String name) {
         List<User> list = service.getUsersAllowAccessByName(name);
+
+        return new ResponseEntity<List<User>>(list, new HttpHeaders(), HttpStatus.OK);
+    }
+
+    @GetMapping("/name/{name}/{page}/{nperpage}")
+    public ResponseEntity<List<User>> getAllByName(@PathVariable("name") String name, @PathVariable("page") int page, @PathVariable("nperpage") int nperpage) {
+        List<User> list = service.getUsersAllowAccessByName(name, page, nperpage);
 
         return new ResponseEntity<List<User>>(list, new HttpHeaders(), HttpStatus.OK);
     }

@@ -90,4 +90,29 @@ public interface UserRepo extends JpaRepository<User, Integer> {
     )
     User getUsersAllowAccessByEmail(String email);
 
+    @Query(
+            value = "SELECT u.* FROM users u WHERE (LOWER(u.username) LIKE %?1%) AND (u.privacy != 2)" +
+                    " LIMIT ?3 OFFSET ?2",
+            nativeQuery = true
+    )
+    List<User> getUsersAllowAccessByName(String name, int init, int nperpage);
+
+    @Query(
+            value = "SELECT * FROM users WHERE id IN (SELECT id1 FROM friends WHERE id2 = ?1 AND " +
+                    "id1 NOT IN (SELECT id2 FROM friends WHERE id1 = ?1))" +
+                    " LIMIT ?3 OFFSET ?2",
+            nativeQuery = true
+    )
+    List<User> getAllPetitions(int id, int init, int nperpage);
+
+    @Query(
+            value = "SELECT * FROM users WHERE id IN (SELECT id1 FROM friends WHERE id2 = ?1 AND " +
+                    "id1 IN (SELECT id2 FROM friends WHERE id1 = ?1))" +
+                    " LIMIT ?3 OFFSET ?2",
+            nativeQuery = true
+    )
+    List<User> getAllFriends(int id, int init, int nperpage);
+
+
+
 }

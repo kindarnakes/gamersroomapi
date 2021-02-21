@@ -17,6 +17,7 @@ import java.util.regex.Pattern;
 
 @RestController
 @RequestMapping("/publication")
+@CrossOrigin(origins = "*", maxAge = 3600)
 public class PublicationController {
     @Autowired
     PublicationService service;
@@ -49,6 +50,7 @@ public class PublicationController {
     public ResponseEntity<Object> createPublication(@Valid @RequestBody Publication myItem) {
 
         Cloud cloud = Cloud.getINSTANCE();
+
         try {
             User u = userService.getUserById(myItem.getUser().getId());
             myItem.setUser(u);
@@ -67,6 +69,7 @@ public class PublicationController {
             Publication created = service.createPublication(myItem);
             return new ResponseEntity<Object>(created, new HttpHeaders(), HttpStatus.OK);
         } catch (Exception e) {
+            e.printStackTrace();
             return new ResponseEntity<Object>(-1, new HttpHeaders(), HttpStatus.LOCKED);
         }
 
@@ -117,10 +120,10 @@ public class PublicationController {
     }
 
     @GetMapping("/{id1}/{id2}")
-    public ResponseEntity<List<Publication>> getAllPublicationByIdAllowed(@PathVariable("id1")Integer iduser, @PathVariable("id2")Integer idsearch) {
-        List<Publication> list = service.getAllPublicationByIdAllowed(iduser, idsearch);
+    public ResponseEntity<Publication> getAllPublicationByIdAllowed(@PathVariable("id1")Integer iduser, @PathVariable("id2")Integer idsearch) {
+        Publication list = service.getAllPublicationByIdAllowed(iduser, idsearch);
 
-        return new ResponseEntity<List<Publication>>(list, new HttpHeaders(), HttpStatus.OK);
+        return new ResponseEntity<Publication>(list, new HttpHeaders(), HttpStatus.OK);
     }
 
 
@@ -144,5 +147,22 @@ public class PublicationController {
             return new ResponseEntity<Integer>(-1, new HttpHeaders(), HttpStatus.BAD_REQUEST);
         }
 
+    }
+
+
+
+    @GetMapping("/{id1}/user/{id2}/{page}/{nperpage}")
+    public ResponseEntity<List<Publication>> getAllPublicationByUserAllowed(@PathVariable("id1")Integer iduser, @PathVariable("id2")Integer idsearch, @PathVariable("page") int page, @PathVariable("nperpage") int nperpage) {
+        List<Publication> list = service.getAllPublicationByIdUserByUserAllowed(iduser, idsearch, page, nperpage);
+
+        return new ResponseEntity<List<Publication>>(list, new HttpHeaders(), HttpStatus.OK);
+    }
+
+
+    @GetMapping("/user/{id}/{page}/{nperpage}")
+    public ResponseEntity<List<Publication>> getPublicationsAllowedUserById(@PathVariable("id") int id, @PathVariable("page") int page, @PathVariable("nperpage") int nperpage) {
+        List<Publication> entity = service.getAllPublicationByUserAllowed(id, page, nperpage);
+
+        return new ResponseEntity<List<Publication>>(entity, new HttpHeaders(), HttpStatus.OK);
     }
 }

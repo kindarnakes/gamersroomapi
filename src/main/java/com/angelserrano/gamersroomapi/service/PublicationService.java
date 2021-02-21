@@ -91,14 +91,29 @@ public class PublicationService {
     }
 
 
-
-    public List<Publication> getAllPublicationByIdAllowed(Integer iduser , Integer idsearch) {
-        List<Publication> itemList = repository.getPublicationsByIdAllowAccessByIdUser(iduser, idsearch);
+    public List<Publication> getAllPublicationByIdUserByUserAllowed(Integer iduser , Integer idsearch, int page, int nperpage) {
+        List<Publication> itemList = repository.getPublicationsByIdUserAllowAccessByIdUser(iduser, idsearch, page>0?(page-1)*nperpage:0, nperpage>0?nperpage:1);
         if (itemList.size() > 0) {
             return itemList;
         } else {
             return new ArrayList<>();
         }
+    }
+
+    public List<Publication> getAllPublicationByUserAllowed(Integer iduser, int page, int nperpage) {
+        List<Publication> itemList = repository.getPublicationsAllowAccessByIdUser(iduser, page>0?(page-1)*nperpage:0, nperpage>0?nperpage:1);
+        if (itemList.size() > 0) {
+            return itemList;
+        } else {
+            return new ArrayList<>();
+        }
+    }
+
+
+
+    public Publication getAllPublicationByIdAllowed(Integer iduser , Integer idsearch) {
+        Publication itemList = repository.getPublicationsByIdAllowAccessByIdUser(iduser, idsearch);
+            return itemList;
     }
 
 

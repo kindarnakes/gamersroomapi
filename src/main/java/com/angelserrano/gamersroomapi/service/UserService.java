@@ -136,30 +136,18 @@ public class UserService {
     }
 
     public List<User> getAllFriends(int id, int page, int nperpage) {
-        List<User> list = repository.getAllFriends(id);
-        int start = (page-1)*nperpage;
-        int end = 1+(page*nperpage);
-        if(end > list.size()){
-            end = list.size();
-        }
-        try {
-            return list.subList(start, end);
-        }catch (IndexOutOfBoundsException | IllegalArgumentException ex){
-            return new ArrayList<>();
-        }
+        List<User> list = repository.getAllFriends(id, page>0?(page-1)*nperpage:0, nperpage>0?nperpage:1);
+        return list;
+    }
+
+    public List<User> getUsersAllowAccessByName(String name, int page, int nperpage) {
+        List<User> list = repository.getUsersAllowAccessByName(name, page>0?(page-1)*nperpage:0, nperpage>0?nperpage:1);
+
+            return list;
     }
     public List<User> getAllPetitions(int id, int page, int nperpage) {
-        List<User> list = repository.getAllPetitions(id);
-        int start = (page-1)*nperpage;
-        int end = 1+(page*nperpage);
-        if(end > list.size()){
-            end = list.size();
-        }
-        try {
-            return list.subList(start, end);
-        }catch (IndexOutOfBoundsException | IllegalArgumentException ex){
-            return new ArrayList<>();
-        }
+        List<User> list = repository.getAllPetitions(id, page>0?(page-1)*nperpage:0, nperpage>0?nperpage:1);
+            return list;
     }
 
     public User logIn(String email, String pass) {
