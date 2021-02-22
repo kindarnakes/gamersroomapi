@@ -18,11 +18,11 @@ public class Comment {
 
     @Column(name = "text")
     private String text;
-    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE}, fetch = FetchType.LAZY)
+    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE}, fetch = FetchType.EAGER)
     @JoinColumn(name = "id_publication")
     @JsonIgnoreProperties({"comments", "user", "text", "images", "time", "videos", "audios", "coordinates", "userlikes"})
     private Publication publication;
-    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE}, fetch = FetchType.LAZY)
+    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE}, fetch = FetchType.EAGER)
     @JoinColumn(name = "id_user")
     @JsonIgnoreProperties({"friends", "comments", "publications", "description", "pass", "email", "portrait", "privacy", "likes"})
     private User user;
