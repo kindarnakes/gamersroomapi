@@ -67,9 +67,11 @@ public class PublicationService {
                 coordinatesRepo.delete(coord);
             }else if(publication.getCoordinates() != null && p.getCoordinates() != null){
                 Coordinates coord = coordinatesRepo.findById(p.getCoordinates().getId()).get();
-                p.setCoordinates(publication.getCoordinates());
-                coordinatesRepo.delete(coord);
+                coord.setLatitude(publication.getCoordinates().getLatitude());
+                coord.setLongitude(publication.getCoordinates().getLongitude());
+                coordinatesRepo.save(coord);
             }else{
+                System.out.println(3);
                 p.setCoordinates(publication.getCoordinates());
             }
 
