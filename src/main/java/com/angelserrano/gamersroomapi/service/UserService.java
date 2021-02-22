@@ -64,7 +64,7 @@ public class UserService {
                 if (entity.getDescription() != null)
                     newEntity.setDescription(entity.getDescription());
 
-                if (entity.accessPass() != null)
+                if (entity.accessPass() != null && !entity.accessPass().matches(""))
                     newEntity.setPass(entity.accessPass());
 
                 newEntity = repository.save(newEntity);
