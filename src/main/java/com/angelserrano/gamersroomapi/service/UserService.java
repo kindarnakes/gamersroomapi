@@ -1,5 +1,6 @@
 package com.angelserrano.gamersroomapi.service;
 
+import com.angelserrano.gamersroomapi.Utils.Cloud;
 import com.angelserrano.gamersroomapi.dao.UserRepo;
 import com.angelserrano.gamersroomapi.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -50,6 +51,10 @@ public class UserService {
 
             if (item.isPresent()) {
                 User newEntity = item.get();
+                if(!entity.getPortrait().matches(newEntity.getPortrait())){
+                    Cloud cloud = Cloud.getINSTANCE();
+                    cloud.destroy(newEntity.getPortrait());
+                }
                 if (entity.getPortrait() != null)
                     newEntity.setPortrait(entity.getPortrait());
 

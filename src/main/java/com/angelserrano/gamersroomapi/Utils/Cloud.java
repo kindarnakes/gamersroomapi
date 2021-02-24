@@ -67,4 +67,15 @@ public class Cloud {
             return "";
         }
     }
+
+    public boolean destroy(String url){
+        boolean destroy = false;
+        try {
+            cloudinary.uploader().destroy(url.split("/")[7]+"/"+url.split("/")[8].split("\\.")[0], ObjectUtils.emptyMap());
+            destroy = true;
+        } catch (IOException|NullPointerException e) {
+            e.printStackTrace();
+        }
+        return destroy;
+    }
 }

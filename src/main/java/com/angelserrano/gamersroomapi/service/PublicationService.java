@@ -1,13 +1,14 @@
 package com.angelserrano.gamersroomapi.service;
 
-import com.angelserrano.gamersroomapi.dao.CoordinatesRepo;
-import com.angelserrano.gamersroomapi.dao.PublicationRepo;
-import com.angelserrano.gamersroomapi.model.Coordinates;
-import com.angelserrano.gamersroomapi.model.Publication;
+import com.angelserrano.gamersroomapi.Utils.Cloud;
+import com.angelserrano.gamersroomapi.dao.*;
+import com.angelserrano.gamersroomapi.model.*;
+import com.cloudinary.Cloudinary;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
@@ -18,6 +19,13 @@ public class PublicationService {
     PublicationRepo repository;
     @Autowired
     CoordinatesRepo coordinatesRepo;
+    @Autowired
+    ImageRepo imageRepo;
+    @Autowired
+    AudioRepo audioRepo;
+    @Autowired
+    VideoRepo videoRepo;
+    Cloud cloud;
 
     public List<Publication> getAllItems() {
         List<Publication> itemList = repository.findAll();
@@ -56,6 +64,7 @@ public class PublicationService {
 
     public Publication updatePublication(Publication publication){
         Optional<Publication> item = repository.findById(publication.getId());
+        cloud = Cloud.getINSTANCE();
 
         if(item.isPresent()){
             Publication p = item.get();
@@ -71,16 +80,37 @@ public class PublicationService {
                 coord.setLongitude(publication.getCoordinates().getLongitude());
                 coordinatesRepo.save(coord);
             }else{
-                System.out.println(3);
                 p.setCoordinates(publication.getCoordinates());
             }
 
 
             p.setAudios(publication.getAudios());
+            List<Audio> audios = p.getAudios();
+            audios.forEach(audio -> {
+                if (audio.getPublication() == null){
+                    cloud.destroy(audio.getUrl());
+                    audioRepo.delete(audioRepo.getOne(audio.getId()));
+                }
+            });
 
             p.setVideos(publication.getVideos());
+            List<Video> videos = p.getVideos();
+            videos.forEach(video -> {
+                if (video.getPublication() == null){
+                    cloud.destroy(video.getUrl());
+                    videoRepo.delete(videoRepo.getOne(video.getId()));
+                }
+            });
 
+
+            List<Image> images = p.getImages();
             p.setImages(publication.getImages());
+            images.forEach(image -> {
+                if (image.getPublication() == null){
+                    cloud.destroy(image.getUrl());
+                    imageRepo.delete(imageRepo.getOne(image.getId()));
+                }
+            });
 
             p.setText(publication.getText());
 
