@@ -40,10 +40,10 @@ public class PublicationController {
 
                 return new ResponseEntity<List<Publication>>(list, new HttpHeaders(), HttpStatus.OK);
             } else {
-                return new ResponseEntity<List<Publication>>(null, new HttpHeaders(), HttpStatus.FORBIDDEN);
+                return new ResponseEntity<List<Publication>>(null, new HttpHeaders(), HttpStatus.UNAUTHORIZED);
             }
         }else{
-            return new ResponseEntity<List<Publication>>(null, new HttpHeaders(), HttpStatus.FORBIDDEN);
+            return new ResponseEntity<List<Publication>>(null, new HttpHeaders(), HttpStatus.UNAUTHORIZED);
         }
     }
 
@@ -58,10 +58,10 @@ public class PublicationController {
 
                 return new ResponseEntity<Publication>(entity, new HttpHeaders(), HttpStatus.OK);
             } else {
-                return new ResponseEntity<Publication>(null, new HttpHeaders(), HttpStatus.FORBIDDEN);
+                return new ResponseEntity<Publication>(null, new HttpHeaders(), HttpStatus.UNAUTHORIZED);
             }
         }else{
-            return new ResponseEntity<Publication>(null, new HttpHeaders(), HttpStatus.FORBIDDEN);
+            return new ResponseEntity<Publication>(null, new HttpHeaders(), HttpStatus.UNAUTHORIZED);
         }
     }
 
@@ -76,10 +76,10 @@ public class PublicationController {
 
                 return new ResponseEntity<List<Publication>>(entity, new HttpHeaders(), HttpStatus.OK);
             } else {
-                return new ResponseEntity<List<Publication>>(null, new HttpHeaders(), HttpStatus.FORBIDDEN);
+                return new ResponseEntity<List<Publication>>(null, new HttpHeaders(), HttpStatus.UNAUTHORIZED);
             }
         }else{
-            return new ResponseEntity<List<Publication>>(null, new HttpHeaders(), HttpStatus.FORBIDDEN);
+            return new ResponseEntity<List<Publication>>(null, new HttpHeaders(), HttpStatus.UNAUTHORIZED);
         }
     }
 
@@ -116,10 +116,10 @@ public class PublicationController {
                     return new ResponseEntity<Publication>(null, new HttpHeaders(), HttpStatus.LOCKED);
                 }
             } else {
-                return new ResponseEntity<Publication>(null, new HttpHeaders(), HttpStatus.FORBIDDEN);
+                return new ResponseEntity<Publication>(null, new HttpHeaders(), HttpStatus.UNAUTHORIZED);
             }
         }else{
-            return new ResponseEntity<Publication>(null, new HttpHeaders(), HttpStatus.FORBIDDEN);
+            return new ResponseEntity<Publication>(null, new HttpHeaders(), HttpStatus.UNAUTHORIZED);
         }
 
     }
@@ -135,10 +135,10 @@ public class PublicationController {
                 service.deleteItemById(id);
                 return HttpStatus.ACCEPTED;
             } else {
-                return HttpStatus.FORBIDDEN;
+                return HttpStatus.UNAUTHORIZED;
             }
         }else{
-            return HttpStatus.FORBIDDEN;
+            return HttpStatus.UNAUTHORIZED;
         }
 
 
@@ -179,10 +179,10 @@ public class PublicationController {
                 Publication updated = service.updatePublication(myItem);
                 return new ResponseEntity<Publication>(updated, new HttpHeaders(), HttpStatus.OK);
             } else {
-                return new ResponseEntity<Publication>(null, new HttpHeaders(), HttpStatus.FORBIDDEN);
+                return new ResponseEntity<Publication>(null, new HttpHeaders(), HttpStatus.UNAUTHORIZED);
             }
         }else{
-            return new ResponseEntity<Publication>(null, new HttpHeaders(), HttpStatus.FORBIDDEN);
+            return new ResponseEntity<Publication>(null, new HttpHeaders(), HttpStatus.UNAUTHORIZED);
         }
 
     }
@@ -200,10 +200,10 @@ public class PublicationController {
 
                 return new ResponseEntity<List<Publication>>(list, new HttpHeaders(), HttpStatus.OK);
             } else {
-                return new ResponseEntity<List<Publication>>(null, new HttpHeaders(), HttpStatus.FORBIDDEN);
+                return new ResponseEntity<List<Publication>>(null, new HttpHeaders(), HttpStatus.UNAUTHORIZED);
             }
         }else{
-            return new ResponseEntity<List<Publication>>(null, new HttpHeaders(), HttpStatus.FORBIDDEN);
+            return new ResponseEntity<List<Publication>>(null, new HttpHeaders(), HttpStatus.UNAUTHORIZED);
         }
     }
 
@@ -219,10 +219,10 @@ public class PublicationController {
 
                 return new ResponseEntity<Publication>(list, new HttpHeaders(), HttpStatus.OK);
             } else {
-                return new ResponseEntity<Publication>(null, new HttpHeaders(), HttpStatus.FORBIDDEN);
+                return new ResponseEntity<Publication>(null, new HttpHeaders(), HttpStatus.UNAUTHORIZED);
             }
         }else{
-            return new ResponseEntity<Publication>(null, new HttpHeaders(), HttpStatus.FORBIDDEN);
+            return new ResponseEntity<Publication>(null, new HttpHeaders(), HttpStatus.UNAUTHORIZED);
         }
 
     }
@@ -244,10 +244,10 @@ public class PublicationController {
                     return new ResponseEntity<Integer>(-1, new HttpHeaders(), HttpStatus.BAD_REQUEST);
                 }
             } else {
-                return new ResponseEntity<Integer>(null, new HttpHeaders(), HttpStatus.FORBIDDEN);
+                return new ResponseEntity<Integer>(null, new HttpHeaders(), HttpStatus.UNAUTHORIZED);
             }
         }else{
-            return new ResponseEntity<Integer>(null, new HttpHeaders(), HttpStatus.FORBIDDEN);
+            return new ResponseEntity<Integer>(null, new HttpHeaders(), HttpStatus.UNAUTHORIZED);
         }
 
     }
@@ -267,10 +267,10 @@ public class PublicationController {
                     return new ResponseEntity<Integer>(-1, new HttpHeaders(), HttpStatus.BAD_REQUEST);
                 }
             } else {
-                return new ResponseEntity<Integer>(null, new HttpHeaders(), HttpStatus.FORBIDDEN);
+                return new ResponseEntity<Integer>(null, new HttpHeaders(), HttpStatus.UNAUTHORIZED);
             }
         }else{
-            return new ResponseEntity<Integer>(null, new HttpHeaders(), HttpStatus.FORBIDDEN);
+            return new ResponseEntity<Integer>(null, new HttpHeaders(), HttpStatus.UNAUTHORIZED);
         }
 
     }
@@ -289,10 +289,10 @@ public class PublicationController {
 
                 return new ResponseEntity<List<Publication>>(list, new HttpHeaders(), HttpStatus.OK);
             } else {
-                return new ResponseEntity<List<Publication>>(null, new HttpHeaders(), HttpStatus.FORBIDDEN);
+                return new ResponseEntity<List<Publication>>(null, new HttpHeaders(), HttpStatus.UNAUTHORIZED);
             }
         }else{
-            return new ResponseEntity<List<Publication>>(null, new HttpHeaders(), HttpStatus.FORBIDDEN);
+            return new ResponseEntity<List<Publication>>(null, new HttpHeaders(), HttpStatus.UNAUTHORIZED);
         }
     }
 
@@ -311,10 +311,10 @@ public class PublicationController {
 
                 return new ResponseEntity<List<Publication>>(entity, new HttpHeaders(), HttpStatus.OK);
             } else {
-                return new ResponseEntity<List<Publication>>(null, new HttpHeaders(), HttpStatus.FORBIDDEN);
+                return new ResponseEntity<List<Publication>>(null, new HttpHeaders(), HttpStatus.UNAUTHORIZED);
             }
         }else{
-            return new ResponseEntity<List<Publication>>(null, new HttpHeaders(), HttpStatus.FORBIDDEN);
+            return new ResponseEntity<List<Publication>>(null, new HttpHeaders(), HttpStatus.UNAUTHORIZED);
         }
     }
 }

@@ -46,10 +46,10 @@ public class CommentController {
 
                 return new ResponseEntity<List<Comment>>(list, new HttpHeaders(), HttpStatus.OK);
             } else {
-                return new ResponseEntity<List<Comment>>(null, new HttpHeaders(), HttpStatus.FORBIDDEN);
+                return new ResponseEntity<List<Comment>>(null, new HttpHeaders(), HttpStatus.UNAUTHORIZED);
             }
         }else{
-            return new ResponseEntity<List<Comment>>(null, new HttpHeaders(), HttpStatus.FORBIDDEN);
+            return new ResponseEntity<List<Comment>>(null, new HttpHeaders(), HttpStatus.UNAUTHORIZED);
         }
     }
 
@@ -64,10 +64,10 @@ public class CommentController {
 
                 return new ResponseEntity<Comment>(entity, new HttpHeaders(), HttpStatus.OK);
             } else {
-                return new ResponseEntity<Comment>(null, new HttpHeaders(), HttpStatus.FORBIDDEN);
+                return new ResponseEntity<Comment>(null, new HttpHeaders(), HttpStatus.UNAUTHORIZED);
             }
         }else{
-            return new ResponseEntity<Comment>(null, new HttpHeaders(), HttpStatus.FORBIDDEN);
+            return new ResponseEntity<Comment>(null, new HttpHeaders(), HttpStatus.UNAUTHORIZED);
         }
     }
 
@@ -89,10 +89,10 @@ public class CommentController {
                     return new ResponseEntity<Comment>(null, new HttpHeaders(), HttpStatus.LOCKED);
                 }
             } else {
-                return new ResponseEntity<Comment>(null, new HttpHeaders(), HttpStatus.FORBIDDEN);
+                return new ResponseEntity<Comment>(null, new HttpHeaders(), HttpStatus.UNAUTHORIZED);
             }
         }else{
-            return new ResponseEntity<Comment>(null, new HttpHeaders(), HttpStatus.FORBIDDEN);
+            return new ResponseEntity<Comment>(null, new HttpHeaders(), HttpStatus.UNAUTHORIZED);
         }
 
     }
@@ -114,10 +114,10 @@ public class CommentController {
                     return new ResponseEntity<Comment>(null, new HttpHeaders(), HttpStatus.LOCKED);
                 }
             } else {
-                return new ResponseEntity<Comment>(null, new HttpHeaders(), HttpStatus.FORBIDDEN);
+                return new ResponseEntity<Comment>(null, new HttpHeaders(), HttpStatus.UNAUTHORIZED);
             }
         }else{
-            return new ResponseEntity<Comment>(null, new HttpHeaders(), HttpStatus.FORBIDDEN);
+            return new ResponseEntity<Comment>(null, new HttpHeaders(), HttpStatus.UNAUTHORIZED);
         }
 
     }
@@ -134,10 +134,10 @@ public class CommentController {
                 service.deleteItemById(id);
                 return HttpStatus.ACCEPTED;
             } else {
-                return HttpStatus.FORBIDDEN;
+                return HttpStatus.UNAUTHORIZED;
             }
         }else{
-            return HttpStatus.FORBIDDEN;
+            return HttpStatus.UNAUTHORIZED;
         }
     }
 
@@ -152,10 +152,10 @@ public class CommentController {
 
                 return new ResponseEntity<List<Comment>>(list, new HttpHeaders(), HttpStatus.OK);
             } else {
-                return new ResponseEntity<List<Comment>>(null, new HttpHeaders(), HttpStatus.FORBIDDEN);
+                return new ResponseEntity<List<Comment>>(null, new HttpHeaders(), HttpStatus.UNAUTHORIZED);
             }
         }else{
-            return new ResponseEntity<List<Comment>>(null, new HttpHeaders(), HttpStatus.FORBIDDEN);
+            return new ResponseEntity<List<Comment>>(null, new HttpHeaders(), HttpStatus.UNAUTHORIZED);
         }
     }
 }

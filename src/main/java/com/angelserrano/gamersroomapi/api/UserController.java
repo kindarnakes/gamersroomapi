@@ -37,10 +37,10 @@ public class UserController {
 
                 return new ResponseEntity<List<User>>(list, new HttpHeaders(), HttpStatus.OK);
             } else {
-                return new ResponseEntity<List<User>>(null, new HttpHeaders(), HttpStatus.FORBIDDEN);
+                return new ResponseEntity<List<User>>(null, new HttpHeaders(), HttpStatus.UNAUTHORIZED);
             }
         }else{
-            return new ResponseEntity<List<User>>(null, new HttpHeaders(), HttpStatus.FORBIDDEN);
+            return new ResponseEntity<List<User>>(null, new HttpHeaders(), HttpStatus.UNAUTHORIZED);
         }
     }
 
@@ -54,10 +54,10 @@ public class UserController {
                 List<User> list = service.getAllowAccess(id);
                 return new ResponseEntity<List<User>>(list, new HttpHeaders(), HttpStatus.OK);
             } else {
-                return new ResponseEntity<List<User>>(null, new HttpHeaders(), HttpStatus.FORBIDDEN);
+                return new ResponseEntity<List<User>>(null, new HttpHeaders(), HttpStatus.UNAUTHORIZED);
             }
         }else{
-            return new ResponseEntity<List<User>>(null, new HttpHeaders(), HttpStatus.FORBIDDEN);
+            return new ResponseEntity<List<User>>(null, new HttpHeaders(), HttpStatus.UNAUTHORIZED);
         }
     }
 
@@ -71,10 +71,10 @@ public class UserController {
                 List<User> list = service.getAllPetitions(id);
                 return new ResponseEntity<List<User>>(list, new HttpHeaders(), HttpStatus.OK);
             } else {
-                return new ResponseEntity<List<User>>(null, new HttpHeaders(), HttpStatus.FORBIDDEN);
+                return new ResponseEntity<List<User>>(null, new HttpHeaders(), HttpStatus.UNAUTHORIZED);
             }
         }else{
-            return new ResponseEntity<List<User>>(null, new HttpHeaders(), HttpStatus.FORBIDDEN);
+            return new ResponseEntity<List<User>>(null, new HttpHeaders(), HttpStatus.UNAUTHORIZED);
         }
     }
 
@@ -88,10 +88,10 @@ public class UserController {
                 List<User> list = service.getAllPetitions(id, page, nperpage);
                 return new ResponseEntity<List<User>>(list, new HttpHeaders(), HttpStatus.OK);
             } else {
-                return new ResponseEntity<List<User>>(null, new HttpHeaders(), HttpStatus.FORBIDDEN);
+                return new ResponseEntity<List<User>>(null, new HttpHeaders(), HttpStatus.UNAUTHORIZED);
             }
         }else{
-            return new ResponseEntity<List<User>>(null, new HttpHeaders(), HttpStatus.FORBIDDEN);
+            return new ResponseEntity<List<User>>(null, new HttpHeaders(), HttpStatus.UNAUTHORIZED);
         }
     }
 
@@ -106,10 +106,10 @@ public class UserController {
                 List<User> list = service.getAllFriends(id);
                 return new ResponseEntity<List<User>>(list, new HttpHeaders(), HttpStatus.OK);
             } else {
-                return new ResponseEntity<List<User>>(null, new HttpHeaders(), HttpStatus.FORBIDDEN);
+                return new ResponseEntity<List<User>>(null, new HttpHeaders(), HttpStatus.UNAUTHORIZED);
             }
         }else{
-            return new ResponseEntity<List<User>>(null, new HttpHeaders(), HttpStatus.FORBIDDEN);
+            return new ResponseEntity<List<User>>(null, new HttpHeaders(), HttpStatus.UNAUTHORIZED);
         }
     }
 
@@ -123,10 +123,10 @@ public class UserController {
                 List<User> list = service.getAllFriends(id, page, nperpage);
                 return new ResponseEntity<List<User>>(list, new HttpHeaders(), HttpStatus.OK);
             } else {
-                return new ResponseEntity<List<User>>(null, new HttpHeaders(), HttpStatus.FORBIDDEN);
+                return new ResponseEntity<List<User>>(null, new HttpHeaders(), HttpStatus.UNAUTHORIZED);
             }
         }else{
-            return new ResponseEntity<List<User>>(null, new HttpHeaders(), HttpStatus.FORBIDDEN);
+            return new ResponseEntity<List<User>>(null, new HttpHeaders(), HttpStatus.UNAUTHORIZED);
         }
     }
 
@@ -145,10 +145,10 @@ public class UserController {
                     return new ResponseEntity<Object>(-1, new HttpHeaders(), HttpStatus.BAD_REQUEST);
                 }
             } else {
-                return new ResponseEntity<Object>(null, new HttpHeaders(), HttpStatus.FORBIDDEN);
+                return new ResponseEntity<Object>(null, new HttpHeaders(), HttpStatus.UNAUTHORIZED);
             }
         }else{
-            return new ResponseEntity<Object>(null, new HttpHeaders(), HttpStatus.FORBIDDEN);
+            return new ResponseEntity<Object>(null, new HttpHeaders(), HttpStatus.UNAUTHORIZED);
         }
     }
 
@@ -164,10 +164,10 @@ public class UserController {
 
                 return new ResponseEntity<User>(entity, new HttpHeaders(), HttpStatus.OK);
             } else {
-                return new ResponseEntity<User>(null, new HttpHeaders(), HttpStatus.FORBIDDEN);
+                return new ResponseEntity<User>(null, new HttpHeaders(), HttpStatus.UNAUTHORIZED);
             }
         }else{
-            return new ResponseEntity<User>(null, new HttpHeaders(), HttpStatus.FORBIDDEN);
+            return new ResponseEntity<User>(null, new HttpHeaders(), HttpStatus.UNAUTHORIZED);
         }
 
     }
@@ -184,10 +184,10 @@ public class UserController {
 
                 return new ResponseEntity<List<User>>(list, new HttpHeaders(), HttpStatus.OK);
             } else {
-                return new ResponseEntity<List<User>>(null, new HttpHeaders(), HttpStatus.FORBIDDEN);
+                return new ResponseEntity<List<User>>(null, new HttpHeaders(), HttpStatus.UNAUTHORIZED);
             }
         }else{
-            return new ResponseEntity<List<User>>(null, new HttpHeaders(), HttpStatus.FORBIDDEN);
+            return new ResponseEntity<List<User>>(null, new HttpHeaders(), HttpStatus.UNAUTHORIZED);
         }
     }
 
@@ -202,10 +202,10 @@ public class UserController {
 
                 return new ResponseEntity<List<User>>(list, new HttpHeaders(), HttpStatus.OK);
             } else {
-                return new ResponseEntity<List<User>>(null, new HttpHeaders(), HttpStatus.FORBIDDEN);
+                return new ResponseEntity<List<User>>(null, new HttpHeaders(), HttpStatus.UNAUTHORIZED);
             }
         }else{
-            return new ResponseEntity<List<User>>(null, new HttpHeaders(), HttpStatus.FORBIDDEN);
+            return new ResponseEntity<List<User>>(null, new HttpHeaders(), HttpStatus.UNAUTHORIZED);
         }
     }
 
@@ -220,10 +220,10 @@ public class UserController {
 
                 return new ResponseEntity<User>(user, new HttpHeaders(), HttpStatus.OK);
             } else {
-                return new ResponseEntity<User>(null, new HttpHeaders(), HttpStatus.FORBIDDEN);
+                return new ResponseEntity<User>(null, new HttpHeaders(), HttpStatus.UNAUTHORIZED);
             }
         }else{
-            return new ResponseEntity<User>(null, new HttpHeaders(), HttpStatus.FORBIDDEN);
+            return new ResponseEntity<User>(null, new HttpHeaders(), HttpStatus.UNAUTHORIZED);
         }
     }
 
@@ -255,10 +255,10 @@ public class UserController {
                     return new ResponseEntity<>(null, new HttpHeaders(), HttpStatus.LOCKED);
                 }
             } else {
-                return new ResponseEntity<>(null, new HttpHeaders(), HttpStatus.FORBIDDEN);
+                return new ResponseEntity<>(null, new HttpHeaders(), HttpStatus.UNAUTHORIZED);
             }
         }else{
-            return new ResponseEntity<>(null, new HttpHeaders(), HttpStatus.FORBIDDEN);
+            return new ResponseEntity<>(null, new HttpHeaders(), HttpStatus.UNAUTHORIZED);
         }
 
     }
@@ -279,10 +279,10 @@ public class UserController {
                 User updated = service.UpdateItem(myItem);
                 return new ResponseEntity<User>(updated, new HttpHeaders(), HttpStatus.OK);
             } else {
-                return new ResponseEntity<User>(null, new HttpHeaders(), HttpStatus.FORBIDDEN);
+                return new ResponseEntity<User>(null, new HttpHeaders(), HttpStatus.UNAUTHORIZED);
             }
         }else{
-            return new ResponseEntity<User>(null, new HttpHeaders(), HttpStatus.FORBIDDEN);
+            return new ResponseEntity<User>(null, new HttpHeaders(), HttpStatus.UNAUTHORIZED);
         }
     }
 
@@ -296,10 +296,10 @@ public class UserController {
                 service.deleteItemById(id);
                 return HttpStatus.ACCEPTED;
             } else {
-                return HttpStatus.FORBIDDEN;
+                return HttpStatus.UNAUTHORIZED;
             }
         }else{
-            return HttpStatus.FORBIDDEN;
+            return HttpStatus.UNAUTHORIZED;
         }
     }
 
@@ -318,10 +318,10 @@ public class UserController {
                     return new ResponseEntity<Integer>(-1, new HttpHeaders(), HttpStatus.BAD_REQUEST);
                 }
             } else {
-                return new ResponseEntity<Integer>(null, new HttpHeaders(), HttpStatus.FORBIDDEN);
+                return new ResponseEntity<Integer>(null, new HttpHeaders(), HttpStatus.UNAUTHORIZED);
             }
         }else{
-            return new ResponseEntity<Integer>(null, new HttpHeaders(), HttpStatus.FORBIDDEN);
+            return new ResponseEntity<Integer>(null, new HttpHeaders(), HttpStatus.UNAUTHORIZED);
         }
 
     }
@@ -341,10 +341,10 @@ public class UserController {
                     return new ResponseEntity<Integer>(-1, new HttpHeaders(), HttpStatus.BAD_REQUEST);
                 }
             } else {
-                return new ResponseEntity<Integer>(null, new HttpHeaders(), HttpStatus.FORBIDDEN);
+                return new ResponseEntity<Integer>(null, new HttpHeaders(), HttpStatus.UNAUTHORIZED);
             }
         }else{
-            return new ResponseEntity<Integer>(null, new HttpHeaders(), HttpStatus.FORBIDDEN);
+            return new ResponseEntity<Integer>(null, new HttpHeaders(), HttpStatus.UNAUTHORIZED);
         }
 
 
@@ -368,10 +368,10 @@ public class UserController {
                     return new ResponseEntity<Boolean>(false, new HttpHeaders(), HttpStatus.BAD_REQUEST);
                 }
             } else {
-                return new ResponseEntity<Boolean>(null, new HttpHeaders(), HttpStatus.FORBIDDEN);
+                return new ResponseEntity<Boolean>(null, new HttpHeaders(), HttpStatus.UNAUTHORIZED);
             }
         }else{
-            return new ResponseEntity<Boolean>(null, new HttpHeaders(), HttpStatus.FORBIDDEN);
+            return new ResponseEntity<Boolean>(null, new HttpHeaders(), HttpStatus.UNAUTHORIZED);
         }
 
 
@@ -395,10 +395,10 @@ public class UserController {
                     return new ResponseEntity<Boolean>(false, new HttpHeaders(), HttpStatus.BAD_REQUEST);
                 }
             } else {
-                return new ResponseEntity<Boolean>(null, new HttpHeaders(), HttpStatus.FORBIDDEN);
+                return new ResponseEntity<Boolean>(null, new HttpHeaders(), HttpStatus.UNAUTHORIZED);
             }
         }else{
-            return new ResponseEntity<Boolean>(null, new HttpHeaders(), HttpStatus.FORBIDDEN);
+            return new ResponseEntity<Boolean>(null, new HttpHeaders(), HttpStatus.UNAUTHORIZED);
         }
 
 
@@ -417,10 +417,10 @@ public class UserController {
                 User user = service.logIn(u.getEmail(), u.accessPass());
                 return new ResponseEntity<User>(user, new HttpHeaders(), HttpStatus.OK);
             } else {
-                return new ResponseEntity<User>(null, new HttpHeaders(), HttpStatus.FORBIDDEN);
+                return new ResponseEntity<User>(null, new HttpHeaders(), HttpStatus.UNAUTHORIZED);
             }
         }else{
-            return new ResponseEntity<User>(null, new HttpHeaders(), HttpStatus.FORBIDDEN);
+            return new ResponseEntity<User>(null, new HttpHeaders(), HttpStatus.UNAUTHORIZED);
         }
 
 
